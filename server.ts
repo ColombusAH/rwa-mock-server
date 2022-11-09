@@ -19,12 +19,12 @@ server.get("/api/users", async (req, res) => {
 
 server.post("/api/users", async (req, res) => {
 	const user = req.body;
-	const users = await db.getData('/users') || [];
+	const users = await db.getObject<User[]>('/users') || [];
 	const exist = users.find((u) => u.email === user.email);
 	if (!!exist) {
 		return res.status(409).send();
 	}
-	await db.push('users', [user]);
+	await db.push('/users', [user], false);
 	res.status(201).send({ user: { ...user, token: "faketoken" } });
 });
 
