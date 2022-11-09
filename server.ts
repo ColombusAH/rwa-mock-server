@@ -11,7 +11,7 @@ const db = new JsonDB(new Config("db.json", true, true, '/'));
 server.use(middleware);
 server.use(jsonServer.bodyParser);
 
-//users
+//users for test 
 server.get("/api/users", async (req, res) => {
 	const users = await db.getData('/users');
 	res.status(200).send(users);
@@ -24,7 +24,7 @@ server.post("/api/users", async (req, res) => {
 	if (!!exist) {
 		return res.status(409).send();
 	}
-	users.push(user);
+	await db.push('users', [user]);
 	res.status(201).send({ user: { ...user, token: "faketoken" } });
 });
 
@@ -50,7 +50,8 @@ server.post("/api/users/login", async (req, res) => {
 //tags
 server.get("/api/tags", async (req, res) => {
 	console.log(await db.getData('/tags'));
-	res.status(200).send(db.getData('/tags'));
+	const tags = await db.getData('/tags');
+	res.status(200).send({ tags: tags });
 });
 
 //articles
