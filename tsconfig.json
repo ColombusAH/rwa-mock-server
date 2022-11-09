@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "target": "ES2017",
+    "lib": ["ES2020"],
+    "declaration": true,
+    "esModuleInterop": true,
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "noImplicitAny": false,
+    "noLib": false,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "allowJs": false,
+    "resolveJsonModule": true,
+    "noUnusedLocals": false,
+    "removeComments": true
+  },
+	"exclude": ["node_modules"]
+}
