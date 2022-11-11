@@ -4,7 +4,8 @@ import { getArticles } from "./data/articles";
 import { getTags } from "./data/tags";
 import { getUsers } from "./data/users";
 import { Article, User } from "./models";
-
+import * as JWT from 'jwt-simple';
+const secret = 'supernotsecret';
 const middleware = jsonServer.defaults();
 const server = jsonServer.create();
 const db = new JsonDB(new Config("db.json", true, true, '/'));
@@ -18,38 +19,43 @@ server.get("/api/users", async (req, res) => {
 });
 
 server.post("/api/users", async (req, res) => {
-	const user = req.body;
+	const creds = req.body;
 	const users = await db.getObject<User[]>('/users') || [];
-	const exist = users.find((u) => u.email === user.email);
+	const exist = users.find((u) => u.email === creds.email);
 	if (!!exist) {
 		return res.status(409).send();
 	}
-	await db.push('/users', [user], false);
-	res.status(201).send({ user: { ...user, token: "faketoken" } });
+	await db.push('/users', [creds], false);
+	const { password, ...userDetails } = creds;
+	const token = JWT.encode({ email: creds.email }, secret);
+
+	res.status(201).send({ user: { ...userDetails, token } });
 });
 
 //login
 server.post("/api/users/login", async (req, res) => {
-	console.log("[/api/users/login]");
 	const allUsers = await db.getObject<User[]>('/users') || [];
 	const creds: any = req.body.user || {};
 	const user = allUsers.find(
 		(u) => u.email === creds.email && u.password === creds.password
 	);
 
-	console.log(user);
+
 	if (!!user) {
 		const { password, ...userDetails } = user;
+		const tokenPayload = { email: user.email };
+		const token = JWT.encode(tokenPayload, secret);
+		console.log('the generated token is ', token);
 		return res
 			.status(200)
-			.send({ user: { ...userDetails, token: "faketoken" } });
+			.send({ user: { ...userDetails, token } });
 	}
+
 	return res.status(401).send();
 });
 
 //tags
 server.get("/api/tags", async (req, res) => {
-	console.log(await db.getData('/tags'));
 	const tags = await db.getData('/tags');
 	res.status(200).send({ tags: tags });
 });
@@ -57,7 +63,6 @@ server.get("/api/tags", async (req, res) => {
 //articles
 
 server.get("/api/articles", async (req, res) => {
-	console.log(await db.getObject<Article[]>('/articles'));
 	const articles = await db.getObject<Article[]>('/articles');
 	const articlesCount = articles?.length || 0;
 
@@ -67,7 +72,6 @@ server.get("/api/articles", async (req, res) => {
 //articles/feed
 
 server.get("/api/articles/feed", async (req, res) => {
-	console.log(await db.getObject<Article[]>('/articles'));
 	const articles = await db.getObject<Article[]>('/articles');
 	const articlesCount = articles?.length || 0;
 
@@ -88,13 +92,11 @@ const init = () => {
 	db.push('/articles', getArticles.articles).then(async () => {
 		console.log('articles loaded');
 		const articles = await db.getObject<Article[]>('/articles');
-		console.log(articles);
 	});
 
 	db.push('/tags', getTags.tags).then(async () => {
 		console.log('tags loaded');
 		const tags = await db.getObject<string[]>('/tags');
-		console.log(tags);
 	});
 
 
