@@ -1,12 +1,13 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "username": "user",
-      "email": "user@email.com",
-      "password": "1234",
-      "bio": "In adipisicing ut cillum ipsum anim pariatur esse cillum qui duis cupidatat.",
-      "image": "assets/images/users/avatar.jpeg"
-    }
-  ]
+	"users": [
+		{
+			"id": 1,
+			"username": "user",
+			"email": "user@email.com",
+			"password": "1234",
+			"bio": "In adipisicing ut cillum ipsum anim pariatur esse cillum qui duis cupidatat.",
+			"image": "assets/images/users/avatar.jpeg",
+			"favoritesSlugs": ["Patrick"]
+		}
+	]
 }

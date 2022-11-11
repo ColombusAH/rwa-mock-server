@@ -1,9 +1,272 @@
-[
-    {
-        "user": {
-            "email": "test@email.com",
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "user",
+            "email": "user@email.com",
             "password": "1234",
-            "username": "test"
+            "bio": "In adipisicing ut cillum ipsum anim pariatur esse cillum qui duis cupidatat.",
+            "image": "assets/images/users/avatar.jpeg",
+            "favoritesSlugs": [
+                "Patrick"
+            ]
         }
-    }
-]
+    ],
+    "articles": [
+        {
+            "slug": "Patrick",
+            "title": "Westphalia",
+            "description": "Lorem exercitation velit aliquip laborum ipsum aliquip aute reprehenderit nulla ad cupidatat.",
+            "body": "Consequat anim ut enim fugiat consequat.",
+            "tagList": [
+                "aliquip",
+                "aute",
+                "consectetur",
+                "amet",
+                "aliquip",
+                "nisi",
+                "ut"
+            ],
+            "createdAt": "Tue Jan 26 1993 16:03:55 GMT+0000 (Etc Greenwich Standard Time)",
+            "updatedAt": "Tue Apr 21 2020 00:12:12 GMT+0000 (Etc Greenwich Standard Time)",
+            "favorited": true,
+            "favoritesCount": 0,
+            "author": {
+                "username": "Cara",
+                "bio": "Id dolor sunt ex in excepteur in et in.",
+                "image": "assets/images/users/avatar.jpeg",
+                "following": false
+            }
+        },
+        {
+            "slug": "Yates",
+            "title": "Babb",
+            "description": "Nisi duis exercitation eu anim.",
+            "body": "Pariatur cillum ipsum elit et eiusmod consequat tempor.",
+            "tagList": [
+                "nisi",
+                "eiusmod",
+                "fugiat",
+                "non",
+                "ullamco",
+                "aliqua",
+                "occaecat"
+            ],
+            "createdAt": "Tue Jun 11 1985 15:54:48 GMT+0000 (Etc Greenwich Standard Time)",
+            "updatedAt": "Mon Jul 21 2014 06:04:22 GMT+0000 (Etc Greenwich Standard Time)",
+            "favorited": false,
+            "favoritesCount": 1,
+            "author": {
+                "username": "Elvia",
+                "bio": "Nulla tempor dolor ut id esse.",
+                "image": "assets/images/users/avatar.jpeg",
+                "following": false
+            }
+        },
+        {
+            "slug": "Taylor",
+            "title": "Denio",
+            "description": "Consectetur reprehenderit non sunt commodo adipisicing cillum adipisicing et ipsum ullamco aliquip esse.",
+            "body": "Ipsum excepteur deserunt ut exercitation occaecat qui dolore incididunt.",
+            "tagList": [
+                "sint",
+                "veniam",
+                "dolore",
+                "adipisicing",
+                "irure",
+                "in",
+                "voluptate"
+            ],
+            "createdAt": "Sat Nov 06 2004 21:42:37 GMT+0000 (Etc Greenwich Standard Time)",
+            "updatedAt": "Sun Aug 25 2019 05:16:28 GMT+0000 (Etc Greenwich Standard Time)",
+            "favorited": false,
+            "favoritesCount": 2,
+            "author": {
+                "username": "Rachelle",
+                "bio": "Id labore occaecat pariatur eiusmod dolore.",
+                "image": "assets/images/users/avatar.jpeg",
+                "following": true
+            }
+        },
+        {
+            "slug": "Dennis",
+            "title": "Frystown",
+            "description": "Nulla consequat esse dolor commodo.",
+            "body": "Voluptate sit occaecat do officia incididunt minim enim.",
+            "tagList": [
+                "adipisicing",
+                "ad",
+                "magna",
+                "ex",
+                "elit",
+                "aliqua",
+                "adipisicing"
+            ],
+            "createdAt": "Sun Feb 11 1996 03:52:01 GMT+0000 (Etc Greenwich Standard Time)",
+            "updatedAt": "Fri Sep 23 2022 13:03:59 GMT+0000 (Etc Greenwich Standard Time)",
+            "favorited": false,
+            "favoritesCount": 3,
+            "author": {
+                "username": "Griffith",
+                "bio": "Sunt tempor voluptate occaecat occaecat.",
+                "image": "assets/images/users/avatar.jpeg",
+                "following": true
+            }
+        },
+        {
+            "slug": "Dickson",
+            "title": "Sidman",
+            "description": "Consequat exercitation duis exercitation esse ipsum aliquip pariatur.",
+            "body": "Reprehenderit do irure cillum aliqua.",
+            "tagList": [
+                "amet",
+                "commodo",
+                "qui",
+                "elit",
+                "et",
+                "laborum",
+                "dolore"
+            ],
+            "createdAt": "Sun Nov 06 1977 12:17:43 GMT+0000 (Etc Greenwich Standard Time)",
+            "updatedAt": "Thu Mar 17 2005 11:57:11 GMT+0000 (Etc Greenwich Standard Time)",
+            "favorited": true,
+            "favoritesCount": 4,
+            "author": {
+                "username": "Kate",
+                "bio": "Ipsum do voluptate labore sunt occaecat dolor do ipsum.",
+                "image": "assets/images/users/avatar.jpeg",
+                "following": false
+            }
+        },
+        {
+            "slug": "Fitzgerald",
+            "title": "Century",
+            "description": "Quis elit magna ex consectetur sint ad id voluptate tempor voluptate nisi consequat.",
+            "body": "Lorem dolor voluptate aliquip anim in eu exercitation.",
+            "tagList": [
+                "nisi",
+                "dolor",
+                "adipisicing",
+                "magna",
+                "nulla",
+                "qui",
+                "duis"
+            ],
+            "createdAt": "Tue Dec 21 1971 12:19:20 GMT+0000 (Etc Greenwich Standard Time)",
+            "updatedAt": "Thu Jan 29 1970 03:05:07 GMT+0000 (Etc Greenwich Standard Time)",
+            "favorited": true,
+            "favoritesCount": 5,
+            "author": {
+                "username": "Dickerson",
+                "bio": "Dolor deserunt labore tempor proident ea do.",
+                "image": "assets/images/users/avatar.jpeg",
+                "following": true
+            }
+        },
+        {
+            "slug": "Henderson",
+            "title": "Dubois",
+            "description": "Fugiat esse commodo qui ea ea pariatur ut pariatur irure id veniam aute ea Lorem.",
+            "body": "Elit occaecat voluptate do aliquip sint minim mollit culpa ad pariatur nisi.",
+            "tagList": [
+                "enim",
+                "et",
+                "excepteur",
+                "nostrud",
+                "nulla",
+                "non",
+                "fugiat"
+            ],
+            "createdAt": "Tue Mar 05 2019 13:28:10 GMT+0000 (Etc Greenwich Standard Time)",
+            "updatedAt": "Sun Jun 22 2003 18:06:35 GMT+0000 (Etc Greenwich Standard Time)",
+            "favorited": true,
+            "favoritesCount": 6,
+            "author": {
+                "username": "Hartman",
+                "bio": "Consequat enim proident occaecat deserunt nulla sint.",
+                "image": "assets/images/users/avatar.jpeg",
+                "following": true
+            }
+        },
+        {
+            "slug": "Kane",
+            "title": "Rivereno",
+            "description": "In pariatur minim tempor dolore esse qui magna quis fugiat amet consectetur.",
+            "body": "Anim ut sit adipisicing cupidatat fugiat ullamco quis id.",
+            "tagList": [
+                "do",
+                "amet",
+                "consequat",
+                "laboris",
+                "irure",
+                "tempor",
+                "incididunt"
+            ],
+            "createdAt": "Tue Nov 11 1986 11:25:03 GMT+0000 (Etc Greenwich Standard Time)",
+            "updatedAt": "Tue Aug 03 1971 17:34:28 GMT+0000 (Etc Greenwich Standard Time)",
+            "favorited": true,
+            "favoritesCount": 7,
+            "author": {
+                "username": "Lloyd",
+                "bio": "Consequat veniam ex deserunt ex culpa ex.",
+                "image": "assets/images/users/avatar.jpeg",
+                "following": false
+            }
+        },
+        {
+            "slug": "Gilmore",
+            "title": "Belleview",
+            "description": "Sunt veniam nostrud enim aliquip elit labore elit Lorem voluptate id culpa.",
+            "body": "Commodo culpa culpa quis amet duis.",
+            "tagList": [
+                "laboris",
+                "ex",
+                "ut",
+                "nostrud",
+                "consectetur",
+                "aute",
+                "reprehenderit"
+            ],
+            "createdAt": "Mon Sep 28 2015 03:02:26 GMT+0000 (Etc Greenwich Standard Time)",
+            "updatedAt": "Fri May 22 1987 12:31:57 GMT+0000 (Etc Greenwich Standard Time)",
+            "favorited": false,
+            "favoritesCount": 8,
+            "author": {
+                "username": "Jenna",
+                "bio": "Do esse occaecat dolor dolor occaecat laboris aliquip eiusmod tempor consectetur tempor.",
+                "image": "assets/images/users/avatar.jpeg",
+                "following": false
+            }
+        },
+        {
+            "slug": "West",
+            "title": "Lookingglass",
+            "description": "Anim sunt veniam culpa irure cillum fugiat.",
+            "body": "Est excepteur magna ullamco pariatur.",
+            "tagList": [
+                "qui",
+                "ipsum",
+                "anim",
+                "adipisicing",
+                "pariatur",
+                "ipsum",
+                "minim"
+            ],
+            "createdAt": "Wed Dec 19 1979 01:04:07 GMT+0000 (Etc Greenwich Standard Time)",
+            "updatedAt": "Wed Jul 16 1986 17:05:16 GMT+0000 (Etc Greenwich Standard Time)",
+            "favorited": false,
+            "favoritesCount": 9,
+            "author": {
+                "username": "user",
+                "bio": "In adipisicing ut cillum ipsum anim pariatur esse cillum qui duis cupidatat.",
+                "image": "assets/images/users/avatar.jpeg",
+                "following": false
+            }
+        }
+    ],
+    "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+    ]
+}
