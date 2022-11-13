@@ -7,6 +7,7 @@ import { Article, User } from "./models";
 import { getArticles } from "./data/articles";
 import { getTags } from "./data/tags";
 import { getUsers } from "./data/users";
+import { RequestWithUser } from "types/express";
 
 
 const server = express();
@@ -19,7 +20,8 @@ const db = new JsonDB(new Config("db.json", true, true, '/', true));
 
 const getUerMdlwr = async (req, res, next) => {
 	const auth = `${req.headers.authorization}`;
-	if (!auth) {
+	console.log(auth);
+	if (!auth || !auth.includes('Token ') || auth.includes('undefined')) {
 		req.user = null;
 		return next();
 	}
@@ -50,6 +52,18 @@ server.post("/api/users", async (req, res) => {
 	const token = JWT.encode({ email: creds.email }, secret);
 
 	res.status(201).send({ user: { ...userDetails, token } });
+});
+
+server.get("/api/user", getUerMdlwr, async (req: RequestWithUser, res) => {
+	const user = req.user;
+	if (!user) {
+		return res.status(401).send({ user: null });
+	}
+	console.log(user);
+	const tokenPayload = { email: user.email };
+	const token = JWT.encode(tokenPayload, secret);
+	const { password, ...userDetails } = user;
+	return res.status(200).send({ user: { ...userDetails, token } });
 });
 
 //login
