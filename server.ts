@@ -122,6 +122,26 @@ server.post("/api/articles/:slug/favorite", getUerMdlwr, async (req: any, res) =
 	res.status(200).send({ requestedArticle });
 });
 
+// articles -> like
+
+server.delete("/api/articles/:slug/favorite", getUerMdlwr, async (req: any, res) => {
+	const slug = req.params.slug;
+	const articles = await db.getObject<Article[]>('/articles');
+	const users = await db.getObject<User[]>('/users');
+	const requestedArticle = articles.find(article => article.slug === slug);
+	if (!requestedArticle) {
+		return res.status(404).send();
+	}
+	const user = users.find(u => u.email === req.user.email);
+	user.favoritesSlugs = user.favoritesSlugs.filter(slug => slug !== requestedArticle.slug);
+	requestedArticle.favorited = false;
+	requestedArticle.favoritesCount -= requestedArticle.favoritesCount > 0 ? 1 : 0;
+	await db.push('/articles', articles, true);
+	await db.push('/users', users, true);
+	res.status(200).send({ requestedArticle });
+});
+
+
 //articles/feed
 
 server.get("/api/articles/feed", async (req, res) => {
