@@ -30,7 +30,8 @@ const getUerMdlwr = async (req, res, next) => {
 	const { email } = tokenPayload;
 	const users = await db.getObject<User[]>('/users') || [];
 	const user = users.find(u => u.email === email);
-	req.user = user;
+	const { password, ...userDetails } = user;
+	req.user = userDetails;
 	next();
 };
 
@@ -93,13 +94,39 @@ server.get("/api/tags", async (req, res) => {
 	res.status(200).send({ tags: tags });
 });
 
-//articles
+//get articles
 
 server.get("/api/articles", async (req, res) => {
 	const articles = await db.getObject<Article[]>('/articles');
 	const articlesCount = articles?.length || 0;
 
 	res.status(200).send({ articles, articlesCount });
+});
+
+// add articles
+server.post("/api/articles", getUerMdlwr, async (req: RequestWithUser, res) => {
+	const user = req.user;
+	const newArticle: Article = req.body.article;
+	console.log(newArticle);
+	newArticle.createdAt = (new Date()).toUTCString();
+	newArticle.slug = `${newArticle.author.username}-${newArticle.title.replace(' ', '')}`;
+	newArticle.author = {
+		username: user.username,
+		bio: user.bio,
+		following: false,
+		image: user.image
+	};
+	const articles = await db.getObject<Article[]>('/articles');
+	const allTags = await db.getObject<string[]>('/tags');
+	const articleTags = newArticle.tagList;
+	const uniquesTags = new Set<string>([...allTags, ...articleTags]);
+
+	articles.push(newArticle);
+
+	db.push('/tags', uniquesTags, true);
+	db.push('/articles', articles, true);;
+
+	res.status(201).send({ article: newArticle });
 });
 
 // articles -> like

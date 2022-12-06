@@ -8,7 +8,9 @@
             "bio": "In adipisicing ut cillum ipsum anim pariatur esse cillum qui duis cupidatat.",
             "image": "assets/images/users/avatar.jpeg",
             "favoritesSlugs": [
-                "Patrick"
+                "Patrick",
+                "Patrick",
+                "Yates"
             ]
         }
     ],
@@ -30,7 +32,7 @@
             "createdAt": "Tue Jan 26 1993 16:03:55 GMT+0000 (Etc Greenwich Standard Time)",
             "updatedAt": "Tue Apr 21 2020 00:12:12 GMT+0000 (Etc Greenwich Standard Time)",
             "favorited": true,
-            "favoritesCount": 0,
+            "favoritesCount": 1,
             "author": {
                 "username": "Cara",
                 "bio": "Id dolor sunt ex in excepteur in et in.",
@@ -54,8 +56,8 @@
             ],
             "createdAt": "Tue Jun 11 1985 15:54:48 GMT+0000 (Etc Greenwich Standard Time)",
             "updatedAt": "Mon Jul 21 2014 06:04:22 GMT+0000 (Etc Greenwich Standard Time)",
-            "favorited": false,
-            "favoritesCount": 1,
+            "favorited": true,
+            "favoritesCount": 2,
             "author": {
                 "username": "Elvia",
                 "bio": "Nulla tempor dolor ut id esse.",
